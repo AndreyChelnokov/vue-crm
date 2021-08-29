@@ -60,8 +60,9 @@ export default {
     }
   },
   methods: {
-    logout() {
-      this.$router.push('/login?massagi="logout"');
+    async logout() {
+      await this.$store.dispatch('logout')
+      this.$router.push('/login?messagi=logout');
     },
   },
   beforeDestroy() {
