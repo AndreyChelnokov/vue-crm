@@ -11,15 +11,15 @@
               <h4>Создать</h4>
             </div>
 
-            <form>
+            <form @submit.prevent="addCat">
               <div class="input-field">
-                <input id="name" type="text" >
+                <input id="name" type="text" v-model="title">
                 <label for="name">Название</label>
                 <span class="helper-text invalid">Введите название</span>
               </div>
 
               <div class="input-field">
-                <input id="limit" type="number" >
+                <input id="limit" type="number" v-model="limit">
                 <label for="limit">Лимит</label>
                 <span class="helper-text invalid">Минимальная величина</span>
               </div>
@@ -71,3 +71,25 @@
     </section>
   </div>
 </template>
+
+
+<script>
+  export default {
+    data() {
+      return {
+        title: '',
+        limit: ''
+      }
+    },
+    methods: {
+      addCat() {
+        const data = {
+          title: this.title,
+          limit: this.limit,
+          id: this.$store.state.categorieList.length
+        }
+        this.$store.commit('addCategorie', data)
+      }
+    }
+  }
+</script>

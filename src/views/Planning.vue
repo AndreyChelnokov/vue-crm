@@ -6,10 +6,10 @@
     </div>
 
     <section>
-      <div>
+      <div v-for="cat in categorieList" :key="cat.id">
         <p>
-          <strong>Девушка:</strong>
-          12 122 из 14 0000
+          <strong>{{ cat.title }}:</strong>
+          0 из {{ cat.limit }}
         </p>
         <div class="progress" >
           <div
@@ -21,3 +21,14 @@
     </section>
   </div>
 </template>
+
+
+<script>
+  export default {
+    computed: {
+      categorieList() {
+        return this.$store.state.categorieList
+      }
+    }
+  }
+</script>
